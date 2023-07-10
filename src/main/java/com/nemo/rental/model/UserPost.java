@@ -1,10 +1,7 @@
 package com.nemo.rental.model;
 
 import com.nemo.rental.enums.Dwelling;
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -16,10 +13,15 @@ public class UserPost {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String title;
-    private String Place;
+    private String place;
+    @Enumerated(EnumType.STRING)
     private Dwelling dwelling;
-    private int ContactNum;
+    private int contactNum;
     private String description;
+    @Lob
+    private byte[] image;
+
+    //private Landlord landlord;
 
 
 

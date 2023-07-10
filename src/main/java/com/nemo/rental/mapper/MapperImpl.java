@@ -1,12 +1,23 @@
 package com.nemo.rental.mapper;
 
 import com.nemo.rental.dto.UserDto;
+import com.nemo.rental.dto.UserPostRequest;
+import com.nemo.rental.enums.Dwelling;
 import com.nemo.rental.enums.UserType;
 import com.nemo.rental.model.User;
+import com.nemo.rental.model.UserPost;
+import com.nemo.rental.service.UserService;
+
+import java.text.ParseException;
 
 public class MapperImpl implements Mapper{
+
+
+    public MapperImpl() {
+    }
+
     @Override
-    public User toUser(UserDto userDto) {
+    public User toUser(UserDto userDto){
         User user=new User();
         user.setId(userDto.getId());
         user.setEmail(userDto.getEmail());
@@ -16,6 +27,8 @@ public class MapperImpl implements Mapper{
         user.setOccupation(userDto.getOccupation());
         user.setContactNum(userDto.getContactNum());
         user.setUserType(UserType.Buyer);
+
+
 
         return user;
     }
@@ -34,4 +47,20 @@ public class MapperImpl implements Mapper{
 
         return userDto;
     }
+
+    @Override
+    public UserPost toUserPost(UserPostRequest userPostRequest) {
+        UserPost userPost=new UserPost();
+        userPost.setId(userPost.getId());
+        userPost.setTitle(userPostRequest.getTitle());
+        userPost.setPlace(userPostRequest.getPlace());
+        userPost.setContactNum(userPostRequest.getContactNum());
+        userPost.setDwelling(userPostRequest.getDwelling());
+        userPost.setDescription(userPostRequest.getDescription());
+        userPost.setImage(userPostRequest.getImage());
+
+        return userPost;
+    }
+
+
 }

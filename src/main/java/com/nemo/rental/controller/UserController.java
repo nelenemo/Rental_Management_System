@@ -1,7 +1,9 @@
 package com.nemo.rental.controller;
 
 import com.nemo.rental.dto.UserDto;
+import com.nemo.rental.model.User;
 import com.nemo.rental.service.UserService;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -28,4 +30,12 @@ public class UserController {
    }
 
 
+   @PutMapping("/updateUser/{id}")
+    public ResponseEntity<User> updateUser(@PathVariable Long id, @RequestBody UserDto userDetails){
+        User updateUsers=userService.updateUser(id, userDetails);
+
+         return ResponseEntity.ok(updateUsers);
+
+
+   }
 }
